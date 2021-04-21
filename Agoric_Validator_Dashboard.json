@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1618959252469,
+  "iteration": 1619016825216,
   "links": [],
   "panels": [
     {
@@ -792,7 +792,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 9,
+        "w": 6,
         "x": 12,
         "y": 4
       },
@@ -881,6 +881,70 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "datasource": "Prometheus AlertManager",
+      "description": "Alertmanager Alert Fired\nDiffer Validator and Consensus Heights",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 18,
+        "y": 4
+      },
+      "id": 1269,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "annotations": false,
+          "expr": "alertname=\"AgoricValidatorHeightHightDiff\"",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "refId": "A",
+          "target": "Query",
+          "type": "timeserie"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alert Height Changed",
+      "type": "stat"
     },
     {
       "datasource": null,
@@ -1147,6 +1211,70 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Syncing",
+      "type": "stat"
+    },
+    {
+      "datasource": "Prometheus AlertManager",
+      "description": "Alertmanager Alert Fired\nValidator Power Chaged",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 18,
+        "y": 7
+      },
+      "id": 1270,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "annotations": false,
+          "expr": "alertname=\"AgoricValidatorPowerChanged\"",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "refId": "A",
+          "target": "Query",
+          "type": "timeserie"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alert Power Changed",
       "type": "stat"
     },
     {
@@ -3440,11 +3568,19 @@
   "refresh": "5s",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "Agoric",
+    "Tendermint"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "agorictest-8",
+          "value": "agorictest-8"
+        },
         "datasource": null,
         "definition": "label_values(tendermint_consensus_height, chain_id)",
         "description": "Chain ID",
@@ -3454,7 +3590,6 @@
         "label": "Chain ID",
         "multi": false,
         "name": "chain_id",
-        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height, chain_id)",
           "refId": "StandardVariableQuery"
@@ -3480,7 +3615,6 @@
         "label": "agoric_instance",
         "multi": false,
         "name": "agoric_instance",
-        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height{chain_id=\"$chain_id\"}, instance)",
           "refId": "StandardVariableQuery"
@@ -3506,7 +3640,6 @@
         "label": "agoric_job",
         "multi": false,
         "name": "agoric_job",
-        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height{chain_id=\"$chain_id\"}, job)",
           "refId": "StandardVariableQuery"
@@ -3532,7 +3665,6 @@
         "label": "node_instance",
         "multi": false,
         "name": "node_instance",
-        "options": [],
         "query": {
           "query": "label_values(node_exporter_build_info,instance)",
           "refId": "StandardVariableQuery"
@@ -3563,13 +3695,6 @@
         "label": "node_job",
         "multi": false,
         "name": "node_job",
-        "options": [
-          {
-            "selected": true,
-            "text": "node",
-            "value": "node"
-          }
-        ],
         "query": {
           "query": "label_values(node_exporter_build_info,job)",
           "refId": "StandardVariableQuery"
@@ -3595,7 +3720,6 @@
         "label": "validator_address",
         "multi": false,
         "name": "validator_address",
-        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_validator_power{chain_id=\"$chain_id\",instance=\"$agoric_instance\",job=\"$agoric_job\"},validator_address)",
           "refId": "StandardVariableQuery"
@@ -3618,7 +3742,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Agoric Dashboard New Copy Copy Back",
+  "title": "Agoric Dashboard",
   "uid": "QUBtcXuGk",
-  "version": 10
+  "version": 14
 }
