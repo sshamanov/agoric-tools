@@ -4,6 +4,8 @@
 Grafana Dashboard JSON
 https://github.com/sshamanov/agoric-tools/blob/main/Agoric_Validator_Dashboard.json
 
+Prometheus Rules for AlertManager
+https://github.com/sshamanov/agoric-tools/blob/main/agoric-rules.yml
 
 ### Monitoring of:
 * Consensus and Validator Heights
