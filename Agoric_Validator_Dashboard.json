@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1619016825216,
+  "id": 9,
+  "iteration": 1619017661167,
   "links": [],
   "panels": [
     {
@@ -3576,11 +3576,6 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "agorictest-8",
-          "value": "agorictest-8"
-        },
         "datasource": null,
         "definition": "label_values(tendermint_consensus_height, chain_id)",
         "description": "Chain ID",
@@ -3590,11 +3585,12 @@
         "label": "Chain ID",
         "multi": false,
         "name": "chain_id",
+        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height, chain_id)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3615,11 +3611,12 @@
         "label": "agoric_instance",
         "multi": false,
         "name": "agoric_instance",
+        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height{chain_id=\"$chain_id\"}, instance)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3640,11 +3637,12 @@
         "label": "agoric_job",
         "multi": false,
         "name": "agoric_job",
+        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_height{chain_id=\"$chain_id\"}, job)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3665,11 +3663,12 @@
         "label": "node_instance",
         "multi": false,
         "name": "node_instance",
+        "options": [],
         "query": {
           "query": "label_values(node_exporter_build_info,instance)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3681,11 +3680,6 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "node",
-          "value": "node"
-        },
         "datasource": null,
         "definition": "label_values(node_exporter_build_info,job)",
         "description": "Node Exporter Job",
@@ -3695,11 +3689,12 @@
         "label": "node_job",
         "multi": false,
         "name": "node_job",
+        "options": [],
         "query": {
           "query": "label_values(node_exporter_build_info,job)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3720,11 +3715,12 @@
         "label": "validator_address",
         "multi": false,
         "name": "validator_address",
+        "options": [],
         "query": {
           "query": "label_values(tendermint_consensus_validator_power{chain_id=\"$chain_id\",instance=\"$agoric_instance\",job=\"$agoric_job\"},validator_address)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 3,
@@ -3744,5 +3740,5 @@
   "timezone": "",
   "title": "Agoric Dashboard",
   "uid": "QUBtcXuGk",
-  "version": 14
+  "version": 4
 }
