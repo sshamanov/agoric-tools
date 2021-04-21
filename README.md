@@ -19,4 +19,4 @@ https://github.com/sshamanov/agoric-tools/blob/main/Agoric_Validator_Dashboard.j
 
 
 ### Screenshot
-![image](https://i.imgur.com/mBS1vPO.png)
+![image](https://i.imgur.com/Pkk1Ic9.png)
