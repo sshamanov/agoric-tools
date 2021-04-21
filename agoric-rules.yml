@@ -1,0 +1,19 @@
+groups:
+  - name: agoric_alert_rules
+    rules:
+      - alert: AgoricValidatorHeightHightDiff
+        expr: sum(tendermint_consensus_height) - sum(tendermint_consensus_validator_last_signed_height) > 1
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance [{{ $labels.instance }}] Agoric Validator Height differ from Consencus Height"
+          description: "[{{ $labels.instance }}] of job [{{ $labels.job }}]\n Agoric Validator Height differ from Consencus Height\n VALUE = {{ $value }}\n LABELS: {{ $labels }}"
+      - alert: AgoricValidatorPowerChanged
+        expr: delta(tendermint_consensus_validator_power[1m]) != 0
+        for: 1m
+        labels:
+          severity: critical
+          annotations:
+          summary: "Instance [{{ $labels.instance }}] Agoric Validator Voting Power Chaged"
+          description: "[{{ $labels.instance }}] of job [{{ $labels.job }}]\n Agoric Validator Voting Power Chaged\n VALUE = {{ $value }}\n LABELS: {{ $labels }}"
