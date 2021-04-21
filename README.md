@@ -7,7 +7,7 @@ https://github.com/sshamanov/agoric-tools/blob/main/Agoric_Validator_Dashboard.j
 Prometheus Rules for AlertManager
 https://github.com/sshamanov/agoric-tools/blob/main/agoric-rules.yml
 
-### Monitoring of:
+### Monitoring on the Grafana Dashboard
 * Consensus and Validator Heights
 * Total and Validator Voting Powers
 * Total number of Validators and Byzantine/Missing
@@ -16,9 +16,13 @@ https://github.com/sshamanov/agoric-tools/blob/main/agoric-rules.yml
 * Number of connected peers and syncing status
 * CPU and Memory statistics from the Node
 * Network Rate monitor of the Node
+* Status of Alertmanager for Height and Power changes
+
+### Prometheus Rules
+* Difference in Validator and Consensus Heights
+* Validator Voting Power Changes
 
 ### Also include HW monitoring from the Node Exporter Metrics
 
-
 ### Screenshot
-![image](https://i.imgur.com/Pkk1Ic9.png)
+![image](https://i.imgur.com/9kt3wBk.png)
