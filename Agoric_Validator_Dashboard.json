@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 9,
-  "iteration": 1619017661167,
+  "iteration": 1619863824925,
   "links": [],
   "panels": [
     {
@@ -28,9 +28,9 @@
         "x": 0,
         "y": 0
       },
-      "id": 17,
+      "id": 1274,
       "panels": [],
-      "title": "Agoric Validator",
+      "title": "Agoric Network",
       "type": "row"
     },
     {
@@ -254,6 +254,68 @@
             "mode": "absolute",
             "steps": [
               {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 9,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(tendermint_consensus_byzantine_validators{instance=\"$agoric_instance\",job=\"$agoric_job\"} + tendermint_consensus_missing_validators{instance=\"$agoric_instance\",job=\"$agoric_job\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Byzantine+Missing",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
                 "color": "dark-yellow",
                 "value": null
               },
@@ -269,7 +331,7 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 9,
+        "x": 12,
         "y": 1
       },
       "id": 12,
@@ -333,80 +395,15 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 12,
-        "y": 1
-      },
-      "id": 11,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "Validator Details",
-          "url": "https://testnet.explorer.agoric.net/validator/$validator_address"
-        }
-      ],
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.4",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "tendermint_consensus_total_txs{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Total TXS",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
         "x": 15,
         "y": 1
       },
-      "id": 7,
+      "id": 13,
       "links": [
         {
           "targetBlank": true,
-          "title": "Validator Details",
-          "url": "https://testnet.explorer.agoric.net/validator/$validator_address"
+          "title": "Agoric Testnet",
+          "url": "https://testnet.explorer.agoric.net/"
         }
       ],
       "options": {
@@ -428,78 +425,32 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "tendermint_consensus_num_txs{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
+          "expr": "1 / rate(tendermint_state_block_processing_time_count{instance=\"$agoric_instance\",job=\"$agoric_job\"}[5m])",
+          "instant": false,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Num TXS",
+      "title": "Avg Block Interval, s",
       "type": "stat"
     },
     {
+      "collapsed": false,
       "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-yellow",
-                "value": 1
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
       "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 18,
-        "y": 1
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
       },
-      "id": 10,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.4",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "tendermint_mempool_size{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Uncommited TXS",
-      "type": "stat"
+      "id": 17,
+      "panels": [],
+      "title": "Agoric Validator",
+      "type": "row"
     },
     {
       "datasource": null,
@@ -533,7 +484,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "id": 3,
       "links": [
@@ -605,7 +556,7 @@
         "h": 3,
         "w": 3,
         "x": 3,
-        "y": 4
+        "y": 5
       },
       "id": 4,
       "links": [
@@ -647,7 +598,6 @@
     },
     {
       "datasource": null,
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -658,12 +608,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-red",
                 "value": null
               },
               {
-                "color": "dark-red",
-                "value": 1
+                "color": "green",
+                "value": 20
               }
             ]
           }
@@ -674,9 +624,9 @@
         "h": 3,
         "w": 3,
         "x": 6,
-        "y": 4
+        "y": 5
       },
-      "id": 8,
+      "id": 6,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -696,7 +646,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(tendermint_consensus_byzantine_validators{instance=\"$agoric_instance\",job=\"$agoric_job\"} + tendermint_consensus_missing_validators{instance=\"$agoric_instance\",job=\"$agoric_job\"})",
+          "expr": "tendermint_p2p_peers{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -704,7 +654,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Byzantine+Missing",
+      "title": "Connected Peers",
       "type": "stat"
     },
     {
@@ -720,12 +670,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-yellow",
-                "value": null
-              },
-              {
                 "color": "blue",
-                "value": 1
+                "value": null
               }
             ]
           }
@@ -736,14 +682,14 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 4
+        "y": 5
       },
-      "id": 13,
+      "id": 7,
       "links": [
         {
           "targetBlank": true,
-          "title": "Agoric Testnet",
-          "url": "https://testnet.explorer.agoric.net/"
+          "title": "Validator Details",
+          "url": "https://testnet.explorer.agoric.net/validator/$validator_address"
         }
       ],
       "options": {
@@ -765,17 +711,15 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "1 / rate(tendermint_state_block_processing_time_count{instance=\"$agoric_instance\",job=\"$agoric_job\"}[5m])",
-          "instant": false,
+          "expr": "tendermint_consensus_num_txs{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
           "interval": "",
-          "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Avg Block Interval, s",
+      "title": "Active TXS",
       "type": "stat"
     },
     {
@@ -785,27 +729,32 @@
       "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "unit": "binBps"
+        },
         "overrides": []
       },
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 3,
         "x": 12,
-        "y": 4
+        "y": 5
       },
       "hiddenSeries": false,
       "id": 19,
       "legend": {
+        "alignAsTable": false,
         "avg": false,
-        "current": false,
+        "current": true,
+        "hideEmpty": false,
         "max": false,
         "min": false,
-        "show": false,
+        "rightSide": false,
+        "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -827,7 +776,7 @@
           "exemplar": true,
           "expr": "sum(rate(tendermint_p2p_peer_send_bytes_total{instance=\"$agoric_instance\",job=\"$agoric_job\"}[1m]))",
           "interval": "",
-          "legendFormat": "tendermint_p2p_peer_send_bytes_total",
+          "legendFormat": "up",
           "refId": "A"
         },
         {
@@ -835,7 +784,7 @@
           "expr": "-sum(rate(tendermint_p2p_peer_receive_bytes_total{instance=\"$agoric_instance\",job=\"$agoric_job\"}[1m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "tendermint_p2p_peer_receive_bytes_total",
+          "legendFormat": "down",
           "refId": "B"
         }
       ],
@@ -854,7 +803,7 @@
         "buckets": null,
         "mode": "time",
         "name": null,
-        "show": true,
+        "show": false,
         "values": []
       },
       "yaxes": [
@@ -865,7 +814,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         },
         {
           "$$hashKey": "object:331",
@@ -910,13 +859,13 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 18,
-        "y": 4
+        "x": 15,
+        "y": 5
       },
       "id": 1269,
       "options": {
         "colorMode": "background",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -943,7 +892,71 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Alert Height Changed",
+      "title": "Alert Height Stuck",
+      "type": "stat"
+    },
+    {
+      "datasource": "Prometheus AlertManager",
+      "description": "Validator was jailed",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 18,
+        "y": 5
+      },
+      "id": 1272,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "annotations": false,
+          "expr": "alertname=\"AgoricValidatorJailed\"",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "refId": "A",
+          "target": "Query",
+          "type": "timeserie"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alert Validator Jailed",
       "type": "stat"
     },
     {
@@ -983,7 +996,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 22,
       "options": {
@@ -1055,7 +1068,7 @@
         "h": 3,
         "w": 3,
         "x": 3,
-        "y": 7
+        "y": 8
       },
       "id": 21,
       "options": {
@@ -1092,6 +1105,7 @@
     },
     {
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1102,12 +1116,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-red",
+                "color": "dark-yellow",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 20
+                "color": "blue",
+                "value": 1
               }
             ]
           }
@@ -1118,9 +1132,16 @@
         "h": 3,
         "w": 3,
         "x": 6,
-        "y": 7
+        "y": 8
       },
-      "id": 6,
+      "id": 11,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Validator Details",
+          "url": "https://testnet.explorer.agoric.net/validator/$validator_address"
+        }
+      ],
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -1140,7 +1161,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "tendermint_p2p_peers{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
+          "expr": "tendermint_consensus_total_txs{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1148,7 +1169,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Connected Peers",
+      "title": "Total TXS",
       "type": "stat"
     },
     {
@@ -1180,7 +1201,69 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 7
+        "y": 8
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "tendermint_mempool_size{instance=\"$agoric_instance\",job=\"$agoric_job\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uncommited TXS",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-yellow",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 15,
+        "y": 8
       },
       "id": 20,
       "options": {
@@ -1242,12 +1325,12 @@
         "h": 3,
         "w": 3,
         "x": 18,
-        "y": 7
+        "y": 8
       },
       "id": 1270,
       "options": {
         "colorMode": "background",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -1284,7 +1367,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 1261,
       "panels": [],
@@ -1337,7 +1420,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 1020,
       "links": [],
@@ -1415,7 +1498,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 11
+        "y": 12
       },
       "id": 1155,
       "links": [],
@@ -1491,7 +1574,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 11
+        "y": 12
       },
       "id": 1019,
       "links": [],
@@ -1559,7 +1642,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": false,
       "id": 1016,
@@ -1644,7 +1727,7 @@
         "h": 4,
         "w": 3,
         "x": 12,
-        "y": 11
+        "y": 12
       },
       "id": 1154,
       "links": [],
@@ -1710,7 +1793,7 @@
         "h": 4,
         "w": 3,
         "x": 15,
-        "y": 11
+        "y": 12
       },
       "id": 1028,
       "links": [],
@@ -1779,7 +1862,7 @@
         "h": 2,
         "w": 2,
         "x": 18,
-        "y": 11
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 1015,
@@ -1868,7 +1951,7 @@
         "h": 2,
         "w": 2,
         "x": 20,
-        "y": 11
+        "y": 12
       },
       "id": 1014,
       "interval": null,
@@ -1957,7 +2040,7 @@
         "h": 2,
         "w": 2,
         "x": 18,
-        "y": 13
+        "y": 14
       },
       "id": 1023,
       "interval": null,
@@ -2046,7 +2129,7 @@
         "h": 2,
         "w": 2,
         "x": 20,
-        "y": 13
+        "y": 14
       },
       "id": 1075,
       "interval": null,
@@ -2112,7 +2195,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 1263,
       "panels": [],
@@ -2155,7 +2238,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 1077,
@@ -2351,7 +2434,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 1078,
@@ -2539,7 +2622,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 1074,
@@ -2659,7 +2742,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 24
       },
       "height": "",
       "hiddenSeries": false,
@@ -2785,7 +2868,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 1229,
@@ -2920,7 +3003,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 1130,
@@ -3029,7 +3112,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 38
       },
       "id": 1265,
       "panels": [],
@@ -3056,7 +3139,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 39
       },
       "height": "",
       "hiddenSeries": false,
@@ -3164,7 +3247,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 1043,
@@ -3276,7 +3359,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 46
       },
       "id": 1267,
       "panels": [],
@@ -3301,7 +3384,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 46
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 1063,
@@ -3443,7 +3526,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 46
+        "y": 47
       },
       "height": "",
       "hiddenSeries": false,
@@ -3628,6 +3711,11 @@
       },
       {
         "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "agoric",
+          "value": "agoric"
+        },
         "datasource": null,
         "definition": "label_values(tendermint_consensus_height{chain_id=\"$chain_id\"}, job)",
         "description": "Agoric SDK job",
@@ -3680,6 +3768,11 @@
       },
       {
         "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "node",
+          "value": "node"
+        },
         "datasource": null,
         "definition": "label_values(node_exporter_build_info,job)",
         "description": "Node Exporter Job",
@@ -3739,6 +3832,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "Agoric Dashboard",
-  "uid": "QUBtcXuGk",
-  "version": 4
+  "uid": "QUBtcXuGkZLP",
+  "version": 5
 }
