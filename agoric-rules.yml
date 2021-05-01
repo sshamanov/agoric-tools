@@ -17,3 +17,10 @@ groups:
           annotations:
           summary: "Instance [{{ $labels.instance }}] Agoric Validator Voting Power Chaged"
           description: "[{{ $labels.instance }}] of job [{{ $labels.job }}]\n Agoric Validator Voting Power Chaged\n VALUE = {{ $value }}\n LABELS: {{ $labels }}"
+      - alert: AgoricValidatorJailed
+        expr: tendermint_consensus_validator_power == 0
+        for: 1m
+        labels:
+          severity: critical
+          annotations:
+          summary: "Instance [{{ $labels.instance }}] Agoric Validator was jailed"
